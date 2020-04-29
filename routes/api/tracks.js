@@ -10,17 +10,19 @@ const {
 } = require('../../data/tracks');
 
 // router.get('/:key/:value', async function(req, res, next) {
-//     if (!req.params.key && !req.params.value) next('route');
-//     else next();
-// }, async function(req, res, next) {
+    // if (!req.params.key && !req.params.value) next('route');
+    // else next();
+// }, 
+// async function(req, res, next) {
 //     try {
-//         const data = await getTrackByID();
+//         const data = await getTrackByID(req.params.key, req.params.value);
 //         res.send(data);
 //     } catch {
 //         console.log(err);
 //         res.status(500).send("Internal Server Issues, check logs");
 //     }
 // });
+// );
 
 // router.get('/:id', async function(req, res, next) {
 //     if (!req.params.id) next('route');

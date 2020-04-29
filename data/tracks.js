@@ -31,51 +31,51 @@ const getTracks = () => {
     return iou;
 };
 
-const getTrackByID = (id) => {
-    const iou = new Promise((resolve, reject) => {
-        MongoClient.connect(url, settings, function(err, client) {
-            if (err) {
-                reject(err);
-            } else {
-                console.log("Successfully connected to database to GET tracks by ID");
-                const db = client.db(dbName);
-                const collection = db.collection(colName)
-                collection.find({ _id : ObjectID(id) }).toArray(function(err, docs) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(docs);
-                        client.close();
-                    };
-                });
-            };
-        });
-    });
-    return iou;
-};
+// const getTrackByID = (id) => {
+//     const iou = new Promise((resolve, reject) => {
+//         MongoClient.connect(url, settings, function(err, client) {
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                 console.log("Successfully connected to database to GET tracks by ID");
+//                 const db = client.db(dbName);
+//                 const collection = db.collection(colName)
+//                 collection.find({ _id : ObjectID(id) }).toArray(function(err, docs) {
+//                     if (err) {
+//                         reject(err);
+//                     } else {
+//                         resolve(docs);
+//                         client.close();
+//                     };
+//                 });
+//             };
+//         });
+//     });
+//     return iou;
+// };
 
-const getTrackByValue = (key, value) => {
-    const iou = new Promise((resolve, reject) => {
-        MongoClient.connect(url, settings, function(err, client) {
-            if (err) {
-                reject(err);
-            } else {
-                console.log("Successfully connected to database to GET tracks by value")
-                const db = client.db(dbName);
-                const collection = db.collection(colName);
-                collection.find({ key : value}).toArray(function(err, docs) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(docs);
-                        client.close();
-                    };
-                });
-            };
-        });
-    });
-    return iou;
-};
+// const getTrackByValue = (key, value) => {
+//     const iou = new Promise((resolve, reject) => {
+//         MongoClient.connect(url, settings, function(err, client) {
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                 console.log("Successfully connected to database to GET tracks by value")
+//                 const db = client.db(dbName);
+//                 const collection = db.collection(colName);
+//                 collection.find({ key : value }).toArray(function(err, docs) {
+//                     if (err) {
+//                         reject(err);
+//                     } else {
+//                         resolve(docs);
+//                         client.close();
+//                     };
+//                 });
+//             };
+//         });
+//     });
+//     return iou;
+// };
 
 const addTrack = (tracks) => {
     const iou = new Promise((resolve, reject) => {
@@ -152,8 +152,8 @@ const deleteTrack = (id) => {
 
 module.exports = {
     getTracks,
-    getTrackByID,
-    getTrackByValue,
+    // getTrackByID,
+    // getTrackByValue,
     addTrack,
     updateTrack,
     deleteTrack
