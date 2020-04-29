@@ -2,40 +2,25 @@ const express = require('express');
 const router = express.Router();
 const {
     getTracks,
-    getTrackByID,
     getTrackByValue,
     addTrack,
     updateTrack,
     deleteTrack
 } = require('../../data/tracks');
 
-// router.get('/:key/:value', async function(req, res, next) {
-    // if (!req.params.key && !req.params.value) next('route');
-    // else next();
-// }, 
-// async function(req, res, next) {
-//     try {
-//         const data = await getTrackByID(req.params.key, req.params.value);
-//         res.send(data);
-//     } catch {
-//         console.log(err);
-//         res.status(500).send("Internal Server Issues, check logs");
-//     }
-// });
-// );
-
-// router.get('/:id', async function(req, res, next) {
-//     if (!req.params.id) next('route');
-//     else next('route');
-// }, async function(req, res, next) {
-//     try {
-//         const data = await getTrackByValue(req.params.id);
-//         res.send(data);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send("Internal Server Issues, check logs");
-//     };
-// });
+router.get('/:key/:value', async function(req, res, next) {
+    if (!req.params.key && !req.params.value) {
+        next('route');
+}
+    try {
+        const value = req.params.value.replace(/_/g," ")
+        const data = await getTrackByValue(req.params.key, value);
+        res.send(data);
+    } catch {
+        console.log(err);
+        res.status(500).send("Internal Server Issues, check logs");
+    }
+});
 
 router.get('/', async function(req, res, next) {
     try {
